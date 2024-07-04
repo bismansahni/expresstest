@@ -16,9 +16,6 @@ export const registerUser = async (req, res) => {
       return res.status(400).json({ message: 'User already exists' });
     }
 
-    
-    
-    
 
     
     const newUser = new User({
@@ -32,38 +29,11 @@ export const registerUser = async (req, res) => {
 
      const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
-    res.status(201).json({ message: 'User registered successfully',username:newUser.username,token });
+    res.status(201).json({ message: 'User registered successfully',username:newUser.username,token,status:"success" });
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-  
-
-
-
-
-
-
 
 
 
